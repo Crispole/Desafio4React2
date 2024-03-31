@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+nav {
+  background-color: rgb(240, 140, 10);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4% 0 4%;
+  min-height: 45px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navuno,
+.navdos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.titulo {
+  text-decoration: none;
+  color: black;
+  margin-left: 10px;
+}
+
+.banner {
+  background-size: auto;
+}
+
+.pizza-slice {
+  height: 50px;
+}
+
+.nav,
+.carro-compra {
+  height: 33px;
+}
+
+.pizza-banner {
+  background-image: url("src/assets/img/Pizzas.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 220px;
+  color: rgb(10, 10, 10);
+  justify-content: center;
+  align-items: center;
+}
+
+.pizza-banner,
+.banner-texto .banner-texto2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-texto {
+  font-size: 48px;
+}
+
+.banner-texto2 {
+  font-size: larger;
+}
+
+.pizza-banner .linea {
+  width: 80%;
+  color: rgb(218, 200, 200);
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 100px;
+  padding: 35px;
+}
+
+/* media-queries */
+@media screen and (max-width: 480px) {
+  section {
+    display: inline-block;
+
+  }
+
+  section .card {
+    margin-bottom: 10px;
+  }
+
+  .navuno,
+  .navdos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+  }
+
+  .pizza-slice {
+    height: 30px;
+  }
+
+  .nav,
+  .carro-compra {
+    height: 23px;
+  }
+
+  .banner-texto {
+    font-size: 28px;
+  }
+
+  .banner-texto2 {
+    font-size: smaller;
+  }
+}
+
+section .card {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.custom-btn {
+  margin-right: 15px;
+}
+
+.texto-compra {
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Componente Detalles */
+.detallesTarjeta {
+  display: flex;
+  margin: 45px 50px 0 50px;
+}
+
+.detallesPrecioBoton {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detallesImagen {
+  height: 390px;
+  margin-right: 20px;
+}
+
+.detallesCard {
+  margin: 30px 0 0 95px;
+}
+
+/* Componente Compra */
+.compraContainer {
+  height: 250px;
+  width: 450px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.compraContainer,
+.compraTexto {
+  margin-top: 2px;
+  font-size: 21px;
+}
+
+.compraContainer,
+.compraPedido {
+  display: grid;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.compraPizzaNombre {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.compraBotones {
+  margin-top: 3%;
+}
+
+.compraBoton {
+  margin-right: 3px;
+}
