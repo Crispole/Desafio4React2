@@ -4,11 +4,21 @@ const Context = createContext({});
 
 export function Provider({ children }) {
   const [pizzas, setPizzas] = useState([]);
+  const [compra, setCompra] = useState([]);
+  const [error, setError] = useState(null);
 
   const getPizzas = async () => {
-    const res = await fetch("/pizzas.json");
-    const data = await res.json();
-    setPizzas(data);
+    try {
+      const res = await fetch("/pizzas.json");
+      if (!res.ok) {
+        throw new Error('No se pudieron cargar las pizzas');
+      }
+      const data = await res.json();
+      setPizzas(data);
+    } catch (error) {
+      console.error("Error al cargar las pizzas:", error);
+      setError('Hubo un problema al cargar las pizzas. Por favor, intenta de nuevo más tarde.');
+    }
   };
 
   useEffect(() => {
@@ -16,8 +26,6 @@ export function Provider({ children }) {
   }, []);
 
   // Carro compras
-  const [compra, setCompra] = useState([]);
-
   const addPizza = (pizza) => {
     const existingPizzaIndex = compra.findIndex(item => item.id === pizza.id);
 
@@ -59,8 +67,9 @@ export function Provider({ children }) {
     setCompra,
     addPizza,
     quitarPizza,
-    totalCompra: calcularTotalCompra(), // Añade el total de la compra al estado global
-    limpiarCompra, // Agrega la función limpiarCompra al estado global
+    totalCompra: calcularTotalCompra(),
+    limpiarCompra,
+    error,
   };
 
   return <Context.Provider value={globalState}>{children}</Context.Provider>;

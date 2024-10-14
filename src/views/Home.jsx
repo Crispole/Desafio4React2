@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useContext, useCallback } from 'react'
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
 import Context from '../context/Context';
 
 import Button from 'react-bootstrap/Button';
@@ -9,9 +8,9 @@ import Card from 'react-bootstrap/Card';
 const Home = () => {
   const { pizzas, addPizza } = useContext(Context);
 
-  const handleAddPizza = (pizza) => {
+  const handleAddPizza = useCallback((pizza) => {
     addPizza(pizza);
-  }
+  }, [addPizza]);
 
   return (
     <div>

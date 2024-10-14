@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Context from '../context/Context';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import PasarelaPago from '../components/PasarelaPago';
 
 const Compra = () => {
   const { compra, limpiarCompra, addPizza, quitarPizza } = useContext(Context);
+  const [showPasarela, setShowPasarela] = useState(false);
 
   // Función para limpiar la compra
   const handleLimpiarCompra = () => {
@@ -23,6 +25,9 @@ const Compra = () => {
 
   // Calcular el total de la compra
   const totalCompra = compra.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  const handlePasarelaShow = () => setShowPasarela(true);
+  const handlePasarelaClose = () => setShowPasarela(false);
 
   return (
     <card>
@@ -48,10 +53,11 @@ const Compra = () => {
         <p>Total: ${totalCompra}</p>
 
         <div className="compraBotones">
-          <Button className="compraBoton" variant="success">Ir a pagar</Button>
+          <Button className="compraBoton" variant="success" onClick={handlePasarelaShow}>Ir a pagar</Button>
           <Link to={'/'}><Button className="compraBoton" variant="secondary">Seguir comprando</Button></Link>
           <Button className="compraBoton" variant="danger" onClick={handleLimpiarCompra}>Anular pedido</Button>
         </div>
+        <PasarelaPago show={showPasarela} handleClose={handlePasarelaClose} totalCompra={totalCompra} />
       </div>
     </card>
   );

@@ -11,16 +11,15 @@ const Navbar = () => {
         <img
           className="pizza-slice"
           src="src/assets/img/Pizza_icon.png"
-          alt="pizza" />
-        <NavLink to="/" className="titulo">Pizzería Mamma Mía!</NavLink>
+          alt="Icono de pizza" />
+        <NavLink to="/" className="titulo" aria-label="Ir a la página principal">Pizzería Mamma Mía!</NavLink>
       </div>
       <div className='navdos'>
         <img
           className="carro-compra"
           src="src/assets/img/carrito.png"
-          alt="carro compra" />
-        {/* Muestra el total de la compra en el navbar */}
-        <NavLink to="/compra" className="titulo">${ totalCompra }</NavLink>
+          alt="Icono de carrito de compras" />
+        <NavLink to="/compra" className="titulo" aria-label={`Ver carrito, total actual: $${totalCompra}`}>${totalCompra}</NavLink>
       </div>
     </nav>
   );
